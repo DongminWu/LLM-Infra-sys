@@ -8,7 +8,9 @@
 文章系统分析了KV Cache传输中的核心挑战，包括​​异构传输​​（如MLA与GQA/MHA结构差异）、​​内存对齐要求​​、​​传输聚合策略​​及与vLLM调度器的深度协同。针对Ascend 910B硬件环境，团队设计了基于​​RDMA​​的高效传输方案，并集成至Mooncake传输引擎（TE），显著提高了带宽利用率和传输可靠性。
 此外，本文探讨了进一步优化方向，如​​分层传输（Layer-wise Strategy）​​、​​异构拓扑下的广播优化​​、​​传输-计算流水线设计​​等，为LLM分布式推理中的数据传输提供了重要实践参考和理论支撑。
 
-
+<audio controls>
+  <source src="https://github.com/user-attachments/files/22303607/KV%2BCache.Ascend.mp3" type="audio/mp3">
+</audio>
 
 ## [PyTorch torch.compile 训练编译技术现状与展望（2025年8月）](https://mp.weixin.qq.com/s/cNTkNZyyETQrHDDYdSSyvw)
 
@@ -20,6 +22,9 @@
 
 尽管在动态形状、编译时间与跨秩一致性方面仍存在挑战，PyTorch 团队正积极推进预编译（AOTInductor） 与统一运行时，旨在为超大规模训练提供稳定、高效的编译解决方案。本文为研究者与工程师理解 PyTorch 编译技术栈提供了系统且前沿的参考。
 
+<audio controls>
+  <source src="https://github.com/user-attachments/files/22303609/PyTorch%2B.%2Btorch.compile%2B.mp3" type="audio/mp3">
+</audio>
 
 
 ## [高级矩阵乘法在NVIDIA GPU上的优化](https://mp.weixin.qq.com/s/IvnvHkWogIrWMjV8j-kZPw)
@@ -31,6 +36,9 @@
 实验结果表明，在锁定频率和未锁定频率两种条件下，所提出的实现方案在多种矩阵规模下均表现出优于或接近cuBLAS的**性能表现**，尤其在较大矩阵乘法中显示出良好的扩展性与稳定性。本文不仅提供了详实的实现细节，还为CU学习者理解高性能SGEMM实现提供了清晰的技术路径与优化思路。
 
 
+<audio controls>
+  <source src="https://github.com/user-attachments/files/22303611/%2BCUDA%2BSGEMM%2B.mp3" type="audio/mp3">
+</audio>
 
 ## [简单聊聊 NVIDIA 最新的 Vera Rubin NVL144 CPX 系统](https://mp.weixin.qq.com/s/f-3RLqe-m_g6NY8JmT5ksg)
 近年来，大语言模型（LLM）推理过程中的**Prefill阶段**（计算密集型）和**Decoding阶段**（存储带宽密集型）表现出显著不同的性能特征，推动了对**分离式推理（PD分离）** 系统的需求。为优化系统效率与成本，NVIDIA最新推出了专为Prefill阶段设计的**Rubin CPX GPU**，采用成本较低的**GDDR7显存**，提供30 PFLOPS的FP4算力及2 TB/s的显存带宽，显著提升了大上下文推理任务的性价比。
@@ -42,6 +50,9 @@
 该项发展标志着GPU架构正朝着更精细化负载优化的方向发展，特别是在支持超长上下文推理场景中，体现出重要的工程与架构创新。
 
 
+<audio controls>
+  <source src="https://github.com/user-attachments/files/22303612/NVIDIA%2B.%2BVera%2BRubin%2BNVL144%2BCPX%2B.mp3" type="audio/mp3">
+</audio>
 
 ## [华为Fellow廖恒博士Hot Chips 2025演讲：UB-Mesh超节点互联架构详解（视频+演讲实录）](https://mp.weixin.qq.com/s/cGsc5ZEa3lLOCLV2TSisrg)
 
@@ -59,11 +70,19 @@ UB-Mesh的核心创新包括：
 
 随着大语言模型（LLM）技术的快速发展，​​高效推理部署​​成为连接模型与实际应用的核心环节。本文系统梳理了当前主流的大模型推理框架，包括 ​​vLLM​​、​​SGLang​​、​​TensorRT-LLM​​、​​Ollama​​、​​XInference​​ 及 ​​LightLLM​​ 等，从核心技术、架构设计、性能指标和适用场景等多维度进行深入分析。
 
+<audio controls>
+  <source src="https://github.com/user-attachments/files/22303619/%2BUB-Mesh%2B.mp3" type="audio/mp3">
+</audio>
+
 ## [一文梳理主流大模型推理部署框架：vLLM、SGLang、TensorRT-LLM、ollama、XInference](https://mp.weixin.qq.com/s/Fsaz7PAUSiKizl_lw-KSeg)
 
 ​​vLLM​​ 通过 ​​PagedAttention​​ 和 ​​连续批处理（Continuous Batching）​​ 显著提升显存利用率和吞吐量，适用于企业级高并发场景。​​SGLang​​ 基于 ​​RadixAttention​​ 实现前缀复用和结构化输出，在高吞吐和多轮对话任务中表现突出。​​TensorRT-LLM​​ 依托 NVIDIA 硬件深度优化，在低延迟场景中性能卓越。​​Ollama​​ 以轻量化和跨平台特性适合本地开发与快速原型验证。​​XInference​​ 和 ​​LightLLM​​ 则专注于分布式推理和边缘计算部署，支持国产硬件与多模态任务。
 
 本文为不同业务需求（如实时响应、高吞吐、资源受限环境或国产化部署）提供选型参考，旨在推动大模型技术的高效落地与应用创新。
+
+<audio controls>
+  <source src="https://github.com/user-attachments/files/22303621/online-audio-converter.com.mp3" type="audio/mp3">
+</audio>
 
 
 ## [打破瓶颈，让RAG学会思考：中科大、智源等发布推理检索框架BGE-Reasoner](https://mp.weixin.qq.com/s/hDBJ998nc9kO6vnTpx9exA)
