@@ -8,9 +8,10 @@
 文章系统分析了KV Cache传输中的核心挑战，包括​​异构传输​​（如MLA与GQA/MHA结构差异）、​​内存对齐要求​​、​​传输聚合策略​​及与vLLM调度器的深度协同。针对Ascend 910B硬件环境，团队设计了基于​​RDMA​​的高效传输方案，并集成至Mooncake传输引擎（TE），显著提高了带宽利用率和传输可靠性。
 此外，本文探讨了进一步优化方向，如​​分层传输（Layer-wise Strategy）​​、​​异构拓扑下的广播优化​​、​​传输-计算流水线设计​​等，为LLM分布式推理中的数据传输提供了重要实践参考和理论支撑。
 
-<audio controls>
-  <source src="https://github.com/user-attachments/files/22303607/KV%2BCache.Ascend.mp3" type="audio/mp3">
+<audio controls="">
+  <source src="https://github.com/user-attachments/files/22303607/KV%2BCache.Ascend.mp3" type="audio/mp3" />
 </audio>
+
 
 ## [PyTorch torch.compile 训练编译技术现状与展望（2025年8月）](https://mp.weixin.qq.com/s/cNTkNZyyETQrHDDYdSSyvw)
 
