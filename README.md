@@ -76,3 +76,8 @@ BGE-Reasoner 的核心创新体现为三方面：
 3. **强化学习优化**：在 Reranker 训练中引入强化学习，增强模型对困难样本的推理与泛化能力。  
 
 此外，BGE-Reasoner 的嵌入模型 **BGE-Reasoner-Embed** 在 BRIGHT 基准下同样达到最优性能，超越 Seed1.5-Embedding、Qwen3-Embedding 等基线模型。该研究不仅提供了性能领先的检索系统，更为推理密集型任务提供了可复制的技术范式。相关模型、代码与数据将开源，推动领域进一步发展。
+
+<audio controls>
+  <source src="https://github.com/user-attachments/files/22303533/BGERAG.mp3" type="audio/mp3">
+</audio>
+
