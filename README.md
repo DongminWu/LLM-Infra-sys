@@ -25,7 +25,7 @@
 尽管在动态形状、编译时间与跨秩一致性方面仍存在挑战，PyTorch 团队正积极推进预编译（AOTInductor） 与统一运行时，旨在为超大规模训练提供稳定、高效的编译解决方案。本文为研究者与工程师理解 PyTorch 编译技术栈提供了系统且前沿的参考。
 
 <audio controls>
-  <source src="https://github.com/user-attachments/files/22303609/PyTorch%2B.%2Btorch.compile%2B.mp3" type="audio/mp3">
+  <source src="https://github.com/DongminWu/LLM-Infra-sys/raw/refs/heads/main/202509/PyTorch+%E7%9A%84+torch.compile+%E7%8E%B0%E7%8A%B6.mp3" type="audio/mp3">
 </audio>
 
 
@@ -39,7 +39,7 @@
 
 
 <audio controls>
-  <source src="https://github.com/user-attachments/files/22303611/%2BCUDA%2BSGEMM%2B.mp3" type="audio/mp3">
+  <source src="https://github.com/DongminWu/LLM-Infra-sys/raw/refs/heads/main/202509/%E4%BC%98%E5%8C%96+CUDA+SGEMM+%E6%80%A7%E8%83%BD.mp3" type="audio/mp3">
 </audio>
 
 ## [简单聊聊 NVIDIA 最新的 Vera Rubin NVL144 CPX 系统](https://mp.weixin.qq.com/s/f-3RLqe-m_g6NY8JmT5ksg)
@@ -53,7 +53,7 @@
 
 
 <audio controls>
-  <source src="https://github.com/user-attachments/files/22303612/NVIDIA%2B.%2BVera%2BRubin%2BNVL144%2BCPX%2B.mp3" type="audio/mp3">
+  <source src="https://github.com/DongminWu/LLM-Infra-sys/raw/refs/heads/main/202509/NVIDIA+%E5%8F%91%E5%B8%83+Vera+Rubin+NVL144+CPX+%E7%B3%BB%E7%BB%9F.mp3" type="audio/mp3">
 </audio>
 
 ## [华为Fellow廖恒博士Hot Chips 2025演讲：UB-Mesh超节点互联架构详解（视频+演讲实录）](https://mp.weixin.qq.com/s/cGsc5ZEa3lLOCLV2TSisrg)
@@ -73,7 +73,7 @@ UB-Mesh的核心创新包括：
 随着大语言模型（LLM）技术的快速发展，​​高效推理部署​​成为连接模型与实际应用的核心环节。本文系统梳理了当前主流的大模型推理框架，包括 ​​vLLM​​、​​SGLang​​、​​TensorRT-LLM​​、​​Ollama​​、​​XInference​​ 及 ​​LightLLM​​ 等，从核心技术、架构设计、性能指标和适用场景等多维度进行深入分析。
 
 <audio controls>
-  <source src="https://github.com/user-attachments/files/22303619/%2BUB-Mesh%2B.mp3" type="audio/mp3">
+  <source src="https://github.com/DongminWu/LLM-Infra-sys/raw/refs/heads/main/202509/%E5%8D%8E%E4%B8%BA%E5%BB%96%E6%81%92%E5%8D%9A%E5%A3%AB%E8%AE%B2%E8%A7%A3+UB-Mesh+%E6%9E%B6%E6%9E%84.mp3" type="audio/mp3">
 </audio>
 
 ## [一文梳理主流大模型推理部署框架：vLLM、SGLang、TensorRT-LLM、ollama、XInference](https://mp.weixin.qq.com/s/Fsaz7PAUSiKizl_lw-KSeg)
@@ -83,7 +83,7 @@ UB-Mesh的核心创新包括：
 本文为不同业务需求（如实时响应、高吞吐、资源受限环境或国产化部署）提供选型参考，旨在推动大模型技术的高效落地与应用创新。
 
 <audio controls>
-  <source src="https://github.com/user-attachments/files/22303621/online-audio-converter.com.mp3" type="audio/mp3">
+  <source src="https://github.com/DongminWu/LLM-Infra-sys/raw/refs/heads/main/202509/%E4%B8%BB%E6%B5%81%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%8E%A8%E7%90%86%E9%83%A8%E7%BD%B2%E6%A1%86%E6%9E%B6%E6%A2%B3%E7%90%86%20(online-audio-converter.com).mp3" type="audio/mp3">
 </audio>
 
 
@@ -99,6 +99,6 @@ BGE-Reasoner 的核心创新体现为三方面：
 此外，BGE-Reasoner 的嵌入模型 **BGE-Reasoner-Embed** 在 BRIGHT 基准下同样达到最优性能，超越 Seed1.5-Embedding、Qwen3-Embedding 等基线模型。该研究不仅提供了性能领先的检索系统，更为推理密集型任务提供了可复制的技术范式。相关模型、代码与数据将开源，推动领域进一步发展。
 
 <audio controls>
-  <source src="https://github.com/user-attachments/files/22303533/BGERAG.mp3" type="audio/mp3">
+  <source src="https://github.com/DongminWu/LLM-Infra-sys/raw/refs/heads/main/202509/BGERAG.mp3" type="audio/mp3">
 </audio>
 
