@@ -9,5 +9,5 @@
 此外，本文探讨了进一步优化方向，如​​分层传输（Layer-wise Strategy）​​、​​异构拓扑下的广播优化​​、​​传输-计算流水线设计​​等，为LLM分布式推理中的数据传输提供了重要实践参考和理论支撑。
 
 <audio controls>
-  <source src="202509/性能暴涨50%PD分离KVcache传输的实战干货.mp3" type="audio/mp3">
+  <source src="/202509/性能暴涨50%PD分离KVcache传输的实战干货.mp3" type="audio/mp3">
 </audio>
