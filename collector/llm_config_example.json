@@ -1,0 +1,5 @@
+{
+  "OPENAI_API_KEY": "xxxxxxxx",
+  "OPENAI_BASE_URL": "xxxxxxxx",
+  "OPENAI_MODEL": "Qwen/Qwen3-Next-80B-A3B-Instruct"
+}
