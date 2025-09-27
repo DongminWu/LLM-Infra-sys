@@ -2,6 +2,16 @@
 
 ## 202509
 
+## [vLLM Office Hours #33 的核心内容！](https://mp.weixin.qq.com/s?__biz=Mzg2MzY3OTc2Mw==&mid=2247484161&idx=1&sn=aee756fa749e4951fbeceecc168ea704&chksm=cfd83db7c8339ecf4a23b844871e12546323bedf06eba688c470923b750d00788835a74e0d0e&mpshare=1&scene=1&srcid=0927cL2ag7znrsk8dWcOe5Q8&sharer_shareinfo=4f10267e7edf5894aa8e5a9c2a196779&sharer_shareinfo_first=4f10267e7edf5894aa8e5a9c2a196779#rd)
+
+vLLM Office Hours #33 重磅发布0.10.2版本，标志着V0引擎正式进入退役倒计时，V1引擎全面成熟。核心更新包括：全面支持Qwen3系列（含多模态Omni与VL）、Mamba-2混合架构（SSM+Transformer）的高效推理，显著提升长序列处理效率与显存利用率；新增20+模型支持，覆盖多模态、OCR、金融等领域；深度优化FP8/FP4量化、FlashAttention与CUDA图，NVIDIA B200推理速度提升2-3倍；扩展Apple Silicon、Intel XPU、IBM Z等平台支持；引入SpinQuant、QuIP等新型量化技术，4bit下精度损失可控。同时，社区正推进音频/视频输出插件，推动vLLM向全栈大模型服务平台演进。
+
+
+## [PD 分离推理架构详解](https://mp.weixin.qq.com/s?__biz=MzkxOTIwMDgxMg==&mid=2247489668&idx=1&sn=549ba8672471dd1f88da5c600d73d00f&chksm=c0b21b6320344f7dda137c2e77de42275115090e456d3935f6bf3a44d386161346dbe6d678da&mpshare=1&scene=1&srcid=09261WT0Ph9o0ym4WV1ruTQb&sharer_shareinfo=05ddb0ed069abcf00d2ef77d6263c16a&sharer_shareinfo_first=05ddb0ed069abcf00d2ef77d6263c16a#rd)
+
+PD分离推理架构通过将大语言模型推理的prefill（预填充）与decode（解码）阶段解耦至独立GPU实例，针对其计算密集型与内存密集型特性分别优化，显著提升满足TTFT与TPOT服务等级目标（SLO）的有效吞吐量（Goodput）。传统共置架构因阶段干扰导致延迟恶化，而PD分离通过高速互联（如NVLink/PCIe 5.0）传输KV Cache，开销可被隐藏，并支持灵活的批处理、并行策略与KV Cache管理。vLLM、Mooncake、Dynamo等主流系统已实现该架构，结合NIXL、LMCache等组件优化传输与缓存，在长上下文场景下可提升吞吐达5倍以上，成为高并发、低延迟LLM服务的核心方案。
+
+
 ## [LLM推理EPLB原理:用可视化深度解析DeepEP](https://mp.weixin.qq.com/s?__biz=MzYyMjA5NzMwOQ==&mid=2247484589&idx=1&sn=1e43f65ca700e086ac97b1a0d247c7f5&chksm=fe413fe5c3c572a385ded940f5d2c3f659a8ccce33d11f6feaee6303ebadb2341b8ec9e968d2&mpshare=1&scene=1&srcid=0925zrx4GIyueoeesBDr2BlO&sharer_shareinfo=1916548245395ee9d050e06aae0c7980&sharer_shareinfo_first=1916548245395ee9d050e06aae0c7980#rd)
 
 本文深度解析DeepSeek开源的EPLB（Expert Parallelism Load Balancer）推理负载均衡机制，聚焦MoE架构中专家计算负载不均问题。EPLB结合冗余副本与分组排序策略，在不重训前提下动态构建物理专家映射，通过预测专家热度、分组复制高负载专家、贪心分配至GPU，实现跨节点负载均衡。作者基于原代码开发可视化工具，清晰呈现输入权重到部署映射的全过程，并区分Prefill（小粒度分组）与Decoding（全局排序）场景下的策略差异。该方案适用于推理阶段，避免频繁权重加载，兼顾通信效率与算力利用率，为大规模MoE推理系统提供高效、可落地的负载均衡范式。
