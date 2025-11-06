@@ -1,5 +1,83 @@
 # LLM-AI-Infra-system好文分享 (文章标题是链接可以点击)
 
+
+## 202511
+
+## [Kimi最新的KimiLinear技术亮点是什么？一起来看下](https://mp.weixin.qq.com/s?__biz=MzYyMjA5NzMwOQ==&mid=2247485745&idx=1&sn=3763b72b5bfb05f8dcec02f2c38ae8b0&chksm=fea43da56d00d4e52c13a1b6ab8af128f5ac24839da11bbb0884ac7c0774fddb72c79cc03e93&mpshare=1&scene=1&srcid=1103STYR0YREZY4TdUrofNBw&sharer_shareinfo=4d4b9ac6e960bf61712271087482ec1a&sharer_shareinfo_first=4d4b9ac6e960bf61712271087482ec1a#rd)
+
+Kimi最新推出的KimiLinear技术核心在于KDA（Kimi Delta Attention）模块，通过将传统线性注意力中的单一衰减因子α扩展为与隐藏维度dk对应的对角化多α矩阵，实现对状态记忆的精细化衰减控制，显著提升长序列建模能力。该技术融合Gated Delta Networks架构，并与MLA以1:3比例混合使用，兼顾效率与性能。其创新在于突破了线性注意力中全局统一衰减的局限，同时保持O(L)计算复杂度，为超长上下文推理提供高效解决方案，代表了Attention机制向状态空间模型演进的重要实践。
+
+
+## [KV cache池化传输会比重算更快吗？一起算一算](https://mp.weixin.qq.com/s?__biz=MzYyMjA5NzMwOQ==&mid=2247485425&idx=1&sn=4043737cca93af32847367626977cd3b&chksm=fe239d4145e887d9057f6530dda3b40536304ae2aa18cbbece21f1e9b0f1aef7da63faac48d4&mpshare=1&scene=1&srcid=1027EwvUx9qYUT9AzsQNFTJ7&sharer_shareinfo=385013e3ce82c6a072d8383c97952ac0&sharer_shareinfo_first=385013e3ce82c6a072d8383c97952ac0#rd)
+
+本文通过理论建模与多场景计算，系统分析了KV cache池化传输与重计算的性能权衡。研究表明：在高带宽（如NVLink）和算力密集型模型（如DeepSeekV3）下，池化传输更优；但在低带宽（<1GB/s）或存储密集型模型（如GQA）中，重计算更具优势。文章量化了传输带宽、GPU算力、序列长度、通信链路（D2D/H2D/RDMA等）及模型结构对延迟的影响，并指出实际部署需综合考虑软件调度开销与硬件配置，建议采用自适应策略动态选择方案，避免通信与集合通信冲突。
+
+
+## [阿里云秘密武器亮相顶会：狂砍82%英伟达含量，213块GPU干了1192块的活](https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247834923&idx=2&sn=aa053bff8bce65699f1b554650b49ce8&chksm=e92f7e003fc4317936bf36da16c44371749ced9dc52198318dc2575446192ade14c01c753360&mpshare=1&scene=1&srcid=1022vlu5iNn1tq0dsn5OWpy0&sharer_shareinfo=b56ed76a919e802e88f9078cfcf98ced&sharer_shareinfo_first=b56ed76a919e802e88f9078cfcf98ced#rd)
+
+阿里云联合北京大学在SOSP顶会上发布新型GPU池化系统Aegaeon，通过token级动态调度技术，将GPU需求从1192块降至213块，削减82%英伟达GPU用量。系统突破传统请求级调度限制，实现单GPU并行服务7个模型，结合组件复用、显存管理与KV缓存同步等优化，将扩缩容开销降低97%，吞吐量提升1.5–9倍。在阿里云百炼平台实测中，GPU利用率从13.3%–33.9%提升至48.1%，服务47个模型无SLO违规，显著提升长尾模型资源效率，为大模型服务提供高性价比新范式。
+
+
+## [SGLang × RoleBasedGroup（RBG）：打通大模型推理PD分离架构规模化落地的“最后一公里”](https://mp.weixin.qq.com/s?__biz=MjM5MDE0Mjc4MA==&mid=2651256455&idx=2&sn=bb66bf6cd3f113924ab94e8975601948&chksm=bc52bfb3b094284699955426f3995ab14764176f7b1211f699b3ad918e813775f39d36281e90&mpshare=1&scene=1&srcid=1020JNia0BzJCbrOnk6ipY86&sharer_shareinfo=5efe6d758f880ad05f745e31e8871a5f&sharer_shareinfo_first=5efe6d758f880ad05f745e31e8871a5f#rd)
+
+SGLang与RoleBasedGroup（RBG）协同推出大模型PD分离架构的生产级落地解决方案。PD分离通过解耦预填充（Prefill）与解码（Decode）阶段，显著提升吞吐与资源利用率，但其状态依赖性导致Kubernetes环境部署复杂、弹性困难、故障恢复低效。RBG作为轻量级K8s原生编排框架，以“角色组”抽象多角色服务，支持声明式拓扑、原地升级、优雅扩缩容与智能故障恢复，无缝集成SGLang等推理引擎，解决KVCache管理、服务发现、级联故障等核心运维难题，使性能提升从实验室走向稳定生产，填补了大模型推理云原生化“最后一公里”空白。
+
+
+## [理解大模型推理中的KV Cache](https://mp.weixin.qq.com/s?__biz=MzI0NjQzMjk0MA==&mid=2247483861&idx=1&sn=0638f63459988d66462e2ab7fe7b825e&chksm=e832f2b5f72ff25608bf2ace9d0301a6d1bd87975ffe27016b885d4ec7fccd8ac5d6a953cf4c&mpshare=1&scene=1&srcid=1019Oe3YANAK9xn6qAMBWr4K&sharer_shareinfo=fb4df97c413edc0b987b64eb8936637f&sharer_shareinfo_first=fb4df97c413edc0b987b64eb8936637f#rd)
+
+KV Cache是提升大语言模型推理效率的关键技术，其核心源于因果解码器的自回归特性与因果掩码机制。在Prefill阶段，模型并行计算输入序列的所有Key和Value并缓存；在Decode阶段，仅需计算新生成token的Query，复用缓存的历史K/V，避免重复计算，使注意力计算复杂度从O(n²)降至O(n)。该机制显著降低计算开销，成为LLM推理优化的基础。为进一步提升资源利用率，工业界常采用Prefill与Decode阶段分离部署，需跨服务器传输KV Cache，带来新的系统设计挑战。
+
+
+## [聊聊大模型推理系统之RServe如何实现66%延迟降低与109%吞吐提升？](https://mp.weixin.qq.com/s?__biz=Mzg2NzU4MDgzMA==&mid=2247547073&idx=1&sn=85e2f9d508894676c02691017475fdcf&chksm=cf645525f485c95c752682a65e91134037780bfc1f12056feefeae578c2201ab426d858c4032&mpshare=1&scene=1&srcid=101519AAqKp1QiEVOfpKm2V2&sharer_shareinfo=70bb2c072f2ea583f670f14beaf770f8&sharer_shareinfo_first=70bb2c072f2ea583f670f14beaf770f8#rd)
+
+中山大学与小红书团队提出RServe，一种面向多模态大模型（LMM）的高效推理系统，通过“嵌入追踪器”与“可调度令牌”机制，首次实现请求内编码与语言模型prefill的细粒度流水线重叠，以及请求间动态批处理协同调度。在Qwen2.5-VL-72B模型上，RServe相较vLLM和gLLM将首令牌延迟降低66%、吞吐提升109%，且兼容Tensor/Pipeline并行，不损失模型精度。该系统突破传统EPD串行架构，显著提升多模态AI服务的实时性与资源利用率，为智能客服、视觉问答等低延迟场景提供通用推理底座。
+
+
+## [万字长文｜大语言模型结构化输出（Structured Output）的技术原理和实现](https://mp.weixin.qq.com/s?__biz=MzIzOTU0NTQ0MA==&mid=2247553794&idx=1&sn=4d87268b65f2c1a968861d54731515fb&chksm=e8e24a20978d8df38711b109526e0f08718fceffafb9d488c4717268c276d82b25277c265ef2&mpshare=1&scene=1&srcid=10157BC7JQPqgGucXU02pVIh&sharer_shareinfo=2db4dd630bcf09aabd8175985d77a5d4&sharer_shareinfo_first=2db4dd630bcf09aabd8175985d77a5d4#rd)
+
+本文系统阐述大语言模型（LLM）结构化输出的技术演进与实现路径，涵盖从提示工程、验证修复、约束解码、监督微调（SFT）、强化学习（SRL）到API接口化六大核心方法。文章指出，传统Prompt引导可靠性不足（约85%），而约束解码可实现100%格式合规，SFT面临“高原瓶颈”，SRL通过结构化思维与奖励机制显著提升复杂结构生成能力。主流API已内化Pydantic/JSON Schema支持，实现类型安全输出。评估需分层：先验结构合规性，再测语义准确性。技术趋势指向多模态生成、自适应解码与SFT-RL融合，推动LLM从文本生成器转型为可信赖的数据引擎。
+
+
+## [从零实现 vLLM (1.1）：并行词嵌入 VocabParallelEmbedding](https://mp.weixin.qq.com/s?__biz=MzU4MTgyOTk1Mw==&mid=2247484630&idx=1&sn=215458fd1c45540a379ba710d9b8fc3a&chksm=fcb603e98f0060093e8ad2910fa759a80175bbdbb76f7de3dbb4ca1893eccbeffc5bf50091e0&mpshare=1&scene=1&srcid=101185Omf8unchtaiU1PHeQM&sharer_shareinfo=ac87111fe41a6201c5d26f3e0f161dea&sharer_shareinfo_first=ac87111fe41a6201c5d26f3e0f161dea#rd)
+
+本文深入解析了vLLM中关键组件VocabParallelEmbedding的分布式实现机制，以Qwen3模型为背景，阐明其如何通过词汇表分片与All-Reduce通信实现高效并行词嵌入。在多GPU环境下，每个设备仅存储和计算部分词汇的嵌入向量，利用掩码过滤无效ID、本地查表后清零无关输出，最终通过All-Reduce聚合得到完整嵌入结果，既降低显存占用，又保持计算一致性。文章结合模拟代码与nano-vllm源码，系统拆解了初始化、权重加载与前向传播全流程，揭示了其“分而治之—合作汇总”的MapReduce范式，为构建高性能大模型推理引擎奠定核心基础。
+
+
+## [突破四足机器人实时控制瓶颈！QUART-Online如何让MLLM告别推理延迟？](https://mp.weixin.qq.com/s?__biz=Mzg2NzU4MDgzMA==&mid=2247546726&idx=1&sn=b4dcc4751ab4dd2c130164b7720946ce&chksm=cf52c37de1e913f22dfc2baa240ae55f2899aeccc15168c91361aef3df4503ed7e5aae60f76a&mpshare=1&scene=1&srcid=1010Fb7Wxxeq2jHlWkYovwoZ&sharer_shareinfo=07e9cbd99a362835f72c5d3a198982db&sharer_shareinfo_first=07e9cbd99a362835f72c5d3a198982db#rd)
+
+本文提出QUART-Online，一种突破四足机器人实时控制瓶颈的多模态大语言模型（MLLM）架构，通过“动作块离散化”（ACD）与“动作-感知对齐”技术，将MLLM推理频率从2Hz提升至50Hz，实现与底层控制器的无延迟同步。该方法不依赖参数压缩，而是将连续动作编码为高维压缩块，结合视觉与语言指令联合微调，在保持原模型语义理解能力的前提下，任务成功率提升65%，动态避障成功率从48%跃至90%。实验验证其在未知物体与指令泛化场景中表现卓越，为具身智能的实时决策提供了高效、高精度的新范式。
+
+
+## [拆解vLLM DP技术栈：特性原理、演进瓶颈与优化方案](https://mp.weixin.qq.com/s?__biz=MzYyMjA5NzMwOQ==&mid=2247484800&idx=1&sn=e07da1a571bcb1718c55c20f81860e66&chksm=feb25a4d02a6acc523e634ce1d4ca1633fa4ed2bcb3d10699e20c41e5608338828f1edda38a9&mpshare=1&scene=1&srcid=1010tNXYhWfdTEdMomm33LKh&sharer_shareinfo=34350d2c61e90382fd9319c26ad746ae&sharer_shareinfo_first=34350d2c61e90382fd9319c26ad746ae#rd)
+
+本文系统拆解vLLM数据并行（DP）技术栈的实现原理、演进瓶颈与优化路径。V1版本采用ZMQ通信、主从架构，通过“wave”机制与dummy batch实现多引擎同步，但存在主节点CPU/流量瓶颈与负载不均问题。社区提出两大演进方向：一是多API Server+Coordinator方案，利用SO_REUSEPORT实现请求负载均衡，但引入新通信链路与复杂性；二是基于Ray的轻量级部署方案，简化启动流程。文章对比分析了两种方案的优劣，并指出当前PR存在同步死锁风险，为vLLM DP规模化部署提供关键技术参考。
+
+
+## [腾讯发布1.58Bit大模型量化新算法Tequila！突破"死区陷阱"，效果性能刷新SOTA](https://mp.weixin.qq.com/s?__biz=MjM5ODYwMjI2MA==&mid=2649796078&idx=1&sn=7c19fcbb318fd27cd60c8cf7bb90db5f&chksm=bf9e1ba27b6f9eabc227cb5e7de6ff549ee9e262931fe54f9e531d469bfe2ee59d529ce644d1&mpshare=1&scene=1&srcid=1010Sxvejv5aw7y9cbPfUZEg&sharer_shareinfo=dcb49f6e6d23e37a607eda5de0acde99&sharer_shareinfo_first=dcb49f6e6d23e37a607eda5de0acde99#rd)
+
+腾讯推出1.58Bit三值量化新算法Tequila，创新性提出“死区陷阱”解决方案，通过可微量化与动态离线偏置机制，将原失效的零权重转化为与输入无关的偏置项，既保留三值运算的硬件效率，又显著提升模型表达能力。该方法在不增加推理开销前提下，实现梯度稳定传播，训练收敛速度与模型性能全面超越BitNet等SOTA方案，在10B token数据上逼近全精度模型，多个基准提升约3%，CPU推理速度提升2–3倍，为大模型高效部署提供低功耗、高精度的实用路径。
+
+
+## [字节 RhythmRL：基于投机采样+长度预测的 RL 加速](https://mp.weixin.qq.com/s?__biz=Mzk0ODU3MjcxNA==&mid=2247490496&idx=1&sn=30c34a697d96fd58789e209d6035bde4&chksm=c240feb7717303ff76d63304a66d7f3c3323e2593421c34841d18da6857eec0a04fdc7ddad0c&mpshare=1&scene=1&srcid=1001HY4grWSxFVzQUIX9IWpV&sharer_shareinfo=76514cd4851857485c72e7072ace3ae2&sharer_shareinfo_first=76514cd4851857485c72e7072ace3ae2#rd)
+
+字节跳动提出RhythmRL，通过投机采样（HistoSpec）与长度预测（HistoPipe）双机制加速大模型强化学习（RL）的Rollout阶段。该方法利用相邻训练Epoch中响应的高度相似性，以历史输出作为草稿提升生成效率，结合动态草稿长度调整与奖励感知后缀树，使Token接受率达65%-79%；同时基于历史长度分布实现跨Step的负载均衡，采用双层调度与迁移机制缓解长尾效应。在8K/16K序列长度下，相较veRL实现2.6倍加速，GPU利用率显著提升，且训练精度无损，适用于数十至数千GPU的规模化部署。
+
+
+## [DeepSeek-V3.2背后的国产算子编程语言TileLang是什么？如何保持性能领先的同时减少6倍代码量？](https://mp.weixin.qq.com/s?__biz=Mzg2NzU4MDgzMA==&mid=2247546203&idx=1&sn=e28b308689b51a2854690a7a49282a89&chksm=cfb608c9957abd6668ca287f51176e4bf2777a6413520f38ed9a3f48aa52edcaff8181059bec&mpshare=1&scene=1&srcid=0930Xsj9Vrvc4usS7lM4GfA1&sharer_shareinfo=53dcdac9030e11ed6e5d89dc3bc99e76&sharer_shareinfo_first=53dcdac9030e11ed6e5d89dc3bc99e76#rd)
+
+TileLang是由北京大学杨智团队研发的开源AI算子编程语言，通过创新的“Tile级抽象”与自动调度机制，将高性能算子开发代码量减少6倍以上（如FlashAttention从500行降至80行），性能媲美手写CUDA/AscendC代码。其多层级编程范式支持从算法工程师到硬件专家的差异化开发需求，并原生支持国产昇腾芯片，推动AI底层工具链自主化。项目开源两个月即获超1800星，已与SGLang等生态集成，成为提升国产AI算力软件生态效率的关键基础设施。
+
+
+## [使用 NVIDIA Dynamo 部署 PD 分离推理服务](https://mp.weixin.qq.com/s?__biz=MzkxOTIwMDgxMg==&mid=2247489617&idx=1&sn=33e7b60594bba624c30114c06d01921e&chksm=c01358dcc910b8964645c986c2ea7b904ae6c23f14258d1920550f71d272878aa4c06399a3ef&mpshare=1&scene=1&srcid=0929QqiIcVps3gSRZAzcIrZK&sharer_shareinfo=b9dea4bf157d540056e8ab48b3a5d002&sharer_shareinfo_first=535f9c41ecd5ab9ebb48869e5a5bef78#rd)
+
+NVIDIA Dynamo 是一个开源分布式推理框架，专为生成式AI模型的高效服务化部署设计，支持TensorRT-LLM、vLLM等主流引擎。其核心通过Planner智能调度、Smart Router KV感知路由、Distributed KV Cache Manager分层缓存管理及NIXL高速传输库，实现prefill与decode阶段的动态分离（PD Disaggregation），显著提升GPU利用率与吞吐量。文章详述了其在本地与Kubernetes环境中的部署流程，展示如何通过CRD声明式编排构建高可用推理集群，有效降低长上下文推理延迟与内存开销，为生产级大模型服务提供低延迟、高扩展的解决方案。
+
+
+## [LLM推理优化:MLA算力均衡实践(提升0.3x)](https://mp.weixin.qq.com/s?__biz=MzYyMjA5NzMwOQ==&mid=2247484706&idx=1&sn=1e8e0b5ce5ae284c8415eede4656de17&chksm=feb94d574851601702939a3f4d361ddca2ef04dbf42d458377a6e236cd686498f9e33c893a87&mpshare=1&scene=1&srcid=0928w9lHoPwnAs0DVqMPbp1h&sharer_shareinfo=80ab55665e730e4fe4f4d42720d04d7a&sharer_shareinfo_first=80ab55665e730e4fe4f4d42720d04d7a#rd)
+
+本文针对LLM推理中MLA架构在Prefill阶段因输入序列长度差异导致的算力不均衡问题，提出一种跨DP域的SP-TP-SP混合并行优化方案。通过序列混合分配与Head维度张量并行，实现token级负载均衡，显著提升吞吐。在vLLM框架上实现，仅需少量修改，于DP4/TP4配置下，定长输入提升20%+，随机长度提升50%+。同时引入LayerShardLinear降低显存开销，并适配Ascend芯片格式约束。该方案有效平衡计算负载，为MoE模型高效推理提供轻量级优化路径。
+
+
 ## 202509
 
 ## [vLLM Office Hours #33 的核心内容！](https://mp.weixin.qq.com/s?__biz=Mzg2MzY3OTc2Mw==&mid=2247484161&idx=1&sn=aee756fa749e4951fbeceecc168ea704&chksm=cfd83db7c8339ecf4a23b844871e12546323bedf06eba688c470923b750d00788835a74e0d0e&mpshare=1&scene=1&srcid=0927cL2ag7znrsk8dWcOe5Q8&sharer_shareinfo=4f10267e7edf5894aa8e5a9c2a196779&sharer_shareinfo_first=4f10267e7edf5894aa8e5a9c2a196779#rd)
