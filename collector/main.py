@@ -10,6 +10,7 @@ from utils import load_lines
 from fetcher import WechatArticleFetcher
 from summarizer import Summarizer
 from readme_manager import ReadmeManager, Article
+import time
 
 def main(url_file: str):
     print("[LOG] 开始读取URL文件...")
@@ -36,7 +37,8 @@ def main(url_file: str):
             art = Article(title=title, url=url, summary=summary)
             print(f"[LOG] 正在插入文章到README...")
             mgr.insert_article(art)
-            print(f"[OK] {title}")
+            print(f"[OK] {title}")\
+            time.sleep(3)
         except Exception as e:
             print(f"[FAIL] {url} -> {e}", file=sys.stderr)
 
