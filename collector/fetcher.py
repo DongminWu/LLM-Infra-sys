@@ -33,10 +33,10 @@ class WechatArticleFetcher:
         
         # 尝试启动浏览器，如果失败则不使用特定的chromedriver路径
         try:
-            self.driver = webdriver.Chrome(options=chrome_options)
+            self.driver = webdriver.Edge(options=chrome_options)
         except Exception as e:
             print(f"[LOG] 使用默认ChromeDriver路径失败: {e}, 尝试自动查找ChromeDriver...")
-            self.driver = webdriver.Chrome(options=chrome_options)
+            self.driver = webdriver.Edge(options=chrome_options)
 
     def _ensure_driver(self):
         """确保浏览器驱动可用，如果不可用则重新初始化"""
