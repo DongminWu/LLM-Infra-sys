@@ -3,6 +3,11 @@
 
 ## 202511
 
+## [扩散不死，BERT永生！Karpathy凌晨反思：自回归时代该终结了?](https://mp.weixin.qq.com/s?__biz=MzI3MTA0MTk1MA==&mid=2652641887&idx=2&sn=769d7defb141fe41e107c308ce78c04e&chksm=f07aa7013741dda9171808a9e2f099e60a4fdb2ac90ca0a390b4a302104996dd1bda6d21dc58&mpshare=1&scene=1&srcid=1106CLICaAGPWTAt0rVxNktU&sharer_shareinfo=71795ae1cf3c0777c1b4e53f1d3c1ad0&sharer_shareinfo_first=71795ae1cf3c0777c1b4e53f1d3c1ad0#rd)
+
+本文揭示了BERT类掩码语言模型与文本扩散模型的本质关联：Nathan Barry通过动态掩码策略，将RoBERTa从判别式模型改造为生成式扩散模型，仅需微调训练目标即可生成连贯文本，验证了BERT本质上是固定掩码率的离散扩散过程。该发现得到Karpathy高度认可，指出扩散生成无需复杂架构，仅靠双向注意力迭代去噪即可实现，为大语言模型的生成范式提供了新路径。结合国内提出的DiffusionBERT与谷歌Gemini Diffusion，预示自回归架构或面临挑战，文本扩散或成LLM下一代关键方向。
+
+
 ## [Kimi最新的KimiLinear技术亮点是什么？一起来看下](https://mp.weixin.qq.com/s?__biz=MzYyMjA5NzMwOQ==&mid=2247485745&idx=1&sn=3763b72b5bfb05f8dcec02f2c38ae8b0&chksm=fea43da56d00d4e52c13a1b6ab8af128f5ac24839da11bbb0884ac7c0774fddb72c79cc03e93&mpshare=1&scene=1&srcid=1103STYR0YREZY4TdUrofNBw&sharer_shareinfo=4d4b9ac6e960bf61712271087482ec1a&sharer_shareinfo_first=4d4b9ac6e960bf61712271087482ec1a#rd)
 
 Kimi最新推出的KimiLinear技术核心在于KDA（Kimi Delta Attention）模块，通过将传统线性注意力中的单一衰减因子α扩展为与隐藏维度dk对应的对角化多α矩阵，实现对状态记忆的精细化衰减控制，显著提升长序列建模能力。该技术融合Gated Delta Networks架构，并与MLA以1:3比例混合使用，兼顾效率与性能。其创新在于突破了线性注意力中全局统一衰减的局限，同时保持O(L)计算复杂度，为超长上下文推理提供高效解决方案，代表了Attention机制向状态空间模型演进的重要实践。
