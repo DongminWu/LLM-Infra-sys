@@ -1,9 +1,8 @@
 import re
 import time
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.edge.options import Options
 from selenium.common.exceptions import TimeoutException, NoSuchElementException
 from markdownify import markdownify
 from utils import random_ua
