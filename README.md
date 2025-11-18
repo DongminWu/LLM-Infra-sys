@@ -3,6 +3,16 @@
 
 ## 202511
 
+## [聊聊大模型推理系统之 DuetServe：告别双卡拆分，南加大&UCR新方案让单卡性能翻倍](https://mp.weixin.qq.com/s?__biz=Mzg2NzU4MDgzMA==&mid=2247549203&idx=1&sn=a8eec8be522a59a2a73324711d59ab01&chksm=cf19d0c9c7cb832d132cf15ae080ac35dd8b926aec6fddccde1c3811fe9945970a2c16097c7b&mpshare=1&scene=1&srcid=11183gHPQfTsvAq8cGG3sqsw&sharer_shareinfo=5be4a14603557ecc3eb57f97ae9c0206&sharer_shareinfo_first=5be4a14603557ecc3eb57f97ae9c0206#rd)
+
+DuetServe是由南加州大学与加州大学河滨分校提出的新型大模型推理系统，首次在单GPU上实现预填充（Prefill）与解码（Decode）阶段的动态硬件级隔离。通过注意力感知的屋顶线模型精准预测延迟，结合SM级空间复用与CUDA图驱动的无中断执行引擎，系统在维持低TBT（时间间隔令牌）的同时，吞吐量提升达1.3倍，显著优于vLLM等主流方案，且避免了双卡拆分带来的显存冗余与跨卡通信开销。该方案以极低成本实现高并发、低延迟推理，为绿色AI服务提供了高效新范式。
+
+
+## [韩松等提出FlashMoBA，比MoBA快7.4倍，序列扩到512K也不会溢出](https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&mid=2651002367&idx=2&sn=326d22bfa0d5fa330a4f58c67b96de76&chksm=85c2552b3a67f98414fcf3f430698def8e4a0db7971362cf7ee3df9bbd62d0c982956604e08d&mpshare=1&scene=1&srcid=1118jH0NDEgEtefzHwFUaLsZ&sharer_shareinfo=59d3b0626d9ab579f7a0cfd325a122fa&sharer_shareinfo_first=59d3b0626d9ab579f7a0cfd325a122fa#rd)
+
+韩松团队提出FlashMoBA，一种高效CUDA内核，显著优化了MoBA（块注意力混合）机制的GPU实现。通过理论分析，研究者发现小块尺寸与Key卷积可提升路由精度，但原有实现因内存碎片与低并行度导致性能劣于稠密注意力。FlashMoBA创新性地融合分块Top-K选择、“收集-致密化”前向与重计算反向策略，消除全局重索引开销，在512K序列下不溢出，较原始MoBA提速7.4倍、内存降低6.1倍，较FlashAttention-2最高快14.7倍，且在语言建模与长文本任务中性能持平或超越稠密注意力，首次实现小块MoBA的实用化部署。
+
+
 ## [告别「一条路走到黑」：通过自我纠错，打造更聪明的Search Agent](https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&mid=2651002367&idx=4&sn=e95c0ad60ff198cdd30655b5fe0b5233&chksm=85cc3b53a67176f6942f39d4980fa2336d0e515a46f377e0ec53d5c2d4dcb91911252222d768&mpshare=1&scene=1&srcid=1118NMYHN4lMU4TVRAHRfNnp&sharer_shareinfo=63bb637b33eea1aed5fad311f48d46bf&sharer_shareinfo_first=63bb637b33eea1aed5fad311f48d46bf#rd)
 
 腾讯内容算法中心与清华大学联合提出ReSeek框架，首次为搜索智能体（Search Agent）引入动态自我纠错机制，突破传统“一条路走到黑”的连锁错误瓶颈。该框架通过新增JUDGE动作，基于元认知评估每步信息有效性，动态过滤误导内容，仅保留有效轨迹指导后续决策，并辅以基于语义相关性的密集奖励函数进行训练。为精准评估推理能力，团队构建FictionalHot虚构基准，彻底消除数据污染。实验表明，ReSeek在多跳问答与虚构场景中显著优于基线，且性能随交互轮次持续提升，JUDGE机制在超40%案例中发挥积极作用，为构建高鲁棒性智能体提供了新范式。
