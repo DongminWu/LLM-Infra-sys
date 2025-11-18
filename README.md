@@ -3,6 +3,76 @@
 
 ## 202511
 
+## [告别「一条路走到黑」：通过自我纠错，打造更聪明的Search Agent](https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&mid=2651002367&idx=4&sn=e95c0ad60ff198cdd30655b5fe0b5233&chksm=85cc3b53a67176f6942f39d4980fa2336d0e515a46f377e0ec53d5c2d4dcb91911252222d768&mpshare=1&scene=1&srcid=1118NMYHN4lMU4TVRAHRfNnp&sharer_shareinfo=63bb637b33eea1aed5fad311f48d46bf&sharer_shareinfo_first=63bb637b33eea1aed5fad311f48d46bf#rd)
+
+腾讯内容算法中心与清华大学联合提出ReSeek框架，首次为搜索智能体（Search Agent）引入动态自我纠错机制，突破传统“一条路走到黑”的连锁错误瓶颈。该框架通过新增JUDGE动作，基于元认知评估每步信息有效性，动态过滤误导内容，仅保留有效轨迹指导后续决策，并辅以基于语义相关性的密集奖励函数进行训练。为精准评估推理能力，团队构建FictionalHot虚构基准，彻底消除数据污染。实验表明，ReSeek在多跳问答与虚构场景中显著优于基线，且性能随交互轮次持续提升，JUDGE机制在超40%案例中发挥积极作用，为构建高鲁棒性智能体提供了新范式。
+
+
+## [为什么 LLM 搞不定复杂任务？ReAct 与 Reflexion 技术综述](https://mp.weixin.qq.com/s?__biz=MzIzOTU0NTQ0MA==&mid=2247555651&idx=1&sn=5a1b76a316c8043c9203d0f068853d60&chksm=e8643fdeaeceec19084871a18612fa1fc6307dad381b1372e959fe3e3352a479153adc550609&mpshare=1&scene=1&srcid=1118bLCGFtJItlaEMrrSQQoI&sharer_shareinfo=1a298d36702744987011371ce8c3747f&sharer_shareinfo_first=1a298d36702744987011371ce8c3747f#rd)
+
+本文综述了大语言模型（LLM）在处理复杂任务时面临的事实幻觉、缺乏实时信息与规划能力等核心瓶颈，并系统介绍ReAct与Reflexion两大前沿提示框架。ReAct通过“推理-行动-观察”循环整合外部工具，有效抑制幻觉并提升多步推理能力；Reflexion在此基础上引入评估与自我反思机制，构建“行动-评估-反思-迭代”闭环，实现无需微调的持续学习。二者结合可形成感知-行动-学习的完整智能体架构，在问答、编程与决策任务中显著超越传统CoT方法，为构建自适应、高可靠AI系统提供关键技术路径。
+
+
+## [成本仅0.3美元，耗时26分钟！CudaForge：颠覆性低成本CUDA优化框架](https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&mid=2651002129&idx=1&sn=646d9afbf70ac8fd860a4e4f188c1a13&chksm=856a2606e75a692bb0c515b8b0a8c152a39b1f6275de057cbd618ea914801c42cd5c46713179&mpshare=1&scene=1&srcid=1117HJawzIbUQuLSfauoerML&sharer_shareinfo=21d1e7bdf0d142f00fadf01bef9776b9&sharer_shareinfo_first=21d1e7bdf0d142f00fadf01bef9776b9#rd)
+
+明尼苏达大学团队提出CudaForge，一种无需训练的多智能体CUDA内核优化框架，通过Coder-Judge双智能体协同与硬件反馈机制，实现高效自动化优化。该框架基于NCU性能指标精准定位算力/带宽瓶颈，迭代生成高性体内核，在KernelBench L1-3上达成97.6%正确率与1.677×平均加速比，显著超越Kevin-32B等训练型方法。单任务仅需26.5分钟、0.3美元API成本，兼容多种GPU架构与大模型，兼具高性能、低成本与强泛化性，为CUDA开发提供实用化新范式。
+
+
+## [面试官问：Agent 的函数调用怎么做到又准又稳？](https://mp.weixin.qq.com/s?__biz=MzkzMDIwMzg1Mw==&mid=2247489115&idx=1&sn=4d5b70eb8cc5fd9e2f6de0039553f57a&chksm=c3136f92b4469830d9d73c4ad5f9d44cab0f53ec154bb9b193a114912c124b0084b189a458b4&mpshare=1&scene=1&srcid=1117y5VDupxHFHJPjCNp7gWr&sharer_shareinfo=d2b07537ffc65916300afec10345d4a1&sharer_shareinfo_first=d2b07537ffc65916300afec10345d4a1#rd)
+
+本文系统拆解了Agent函数调用（Function Call）的准确率与稳定性保障体系，指出仅依赖模型原生调用仅能得40分，真正高分方案需构建五大工程化机制：动态函数路由减少工具歧义、CoT+Plan-Execute强制步骤化执行、多层结果校验（参数/JSON/API）、记忆模块实现多轮上下文一致、日志驱动的badcase聚类优化。结合旅行助手等真实案例，作者以数据证明路由可降错误率15%、Plan-Execute使成功率从62%提升至92%，强调Agent稳健性依赖系统性设计而非碎片技巧，为面试者提供可复用的落地方法论。
+
+
+## [AI infra 人选该怎么跳槽](https://mp.weixin.qq.com/s?__biz=MzYyMjk1Njg4MQ==&mid=2247483655&idx=1&sn=ac755ac600734a9b53bcc6448d1ceb35&chksm=fea7d47e9d3b653bc99f74f04686ab712621c3723eb311d732d4e062d20d72120f3b582807d2&mpshare=1&scene=1&srcid=1114Doye4rZakR6XIbWBDtUJ&sharer_shareinfo=65b65fb0a2575f133ef5a61efcc68773&sharer_shareinfo_first=65b65fb0a2575f133ef5a61efcc68773#rd)
+
+当前AI infra人才市场供不应求，核心岗位薪酬涨幅普遍达20%–70%，跳槽关键取决于项目匹配度、技术深度与代码能力。主流方向包括大模型压缩、训练/推理框架优化（如vLLM、DeepSpeed）、CUDA/Ascend算子开发、编译优化（TVM/MLIR）及高性能通信（NCCL/RDMA）。大厂分三梯队：字节、快手等为第一梯队，阿里、腾讯为核心第二梯队，晋升路径依职级（P6–P9）侧重技术成长、独立负责或团队领导。2025年起，非相关背景转岗难度显著上升，建议提前刷题、精准评估诉求（薪酬/强度/平台），并借助内推与猎头高效对接机会。
+
+
+## [6666！NeurIPS满分论文来了](https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247841388&idx=2&sn=a89a2ac93cf6e8d8e1c00540b00dd752&chksm=e97487d8323e2d82293bee14c9223f3e5e851518f016796bea1dd863c5eea1f01c86e9882614&mpshare=1&scene=1&srcid=1112zfrouP114jc3a8ws3AWS&sharer_shareinfo=54f1a01f3c9fc72764b664c19f161dcf&sharer_shareinfo_first=54f1a01f3c9fc72764b664c19f161dcf#rd)
+
+NeurIPS 2025唯一满分论文由清华与上海交大团队联合完成，颠覆性指出：大模型推理能力上限由基座模型决定，而非强化学习（RLVR）。研究通过pass@k等多维度实验，在数学、代码、视觉推理三大任务中证明，RLVR仅优化已有推理路径，无法突破基座模型潜力；而知识蒸馏更可能引入新推理模式，实现能力扩展。该成果质疑了当前主流模型（如OpenAI-o1、DeepSeek-R1）依赖RLVR的范式，引发行业对资源投入方向的重新思考。论文同时获ICML 2025最佳论文奖，作者团队含DenseNet提出者黄高副教授，研究严谨、影响深远。
+
+
+## [AIO Sandbox：为 AI Agent 打造的一体化、可定制的沙箱环境](https://mp.weixin.qq.com/s?__biz=MzI1MzYzMjE0MQ==&mid=2247517104&idx=1&sn=ef0dc840f9133ed09b50f13440a13c76&chksm=e8b2d6ef82aae701ffa74a2598657088948c58ca551b7d227cb2adc985c387456ce80e9cf87d&mpshare=1&scene=1&srcid=1111l5UT6S8OP2lNy7yVFcQ0&sharer_shareinfo=82659461c90d466db2202d2b5c6f0fb5&sharer_shareinfo_first=82659461c90d466db2202d2b5c6f0fb5#rd)
+
+AIO Sandbox 是由字节跳动推出的面向AI Agent的一体化沙箱环境，基于Docker镜像集成浏览器控制（CDP与GUI视觉操作）、代码执行（Python/Node.js）、终端命令、文件系统、反向/正向代理、VNC人工接管及JWT鉴权等核心能力，打破传统多沙箱割裂困境。支持三级定制：开箱即用、工具扩展与镜像定制，适配科研、金融、法务等垂直场景。通过统一API与MCP协议，实现秒级启动、低延迟交互与安全隔离，显著提升Agent任务执行效率与交付质量，为AI智能体提供媲美人类操作的全栈执行环境。
+
+
+## [领军专栏丨清华大学汪玉团队: 混合专家(MoE)大语言模型系统与架构优化技术研究综述](https://mp.weixin.qq.com/s?__biz=Mzg2NzU3ODE0OA==&mid=2247501396&idx=1&sn=a3e583ee893c9f3d3cc8e0ea6cca6f76&chksm=cfd3f3df50169588273ce7ae0bce8f8005746560f1984950c5ca064cda6a82b6d9b321dcf1d7&mpshare=1&scene=1&srcid=11119EaA71FZKpgTbGIJu1bj&sharer_shareinfo=505a748dfae17217ee001c6053ec37fc&sharer_shareinfo_first=505a748dfae17217ee001c6053ec37fc#rd)
+
+清华大学汪玉团队在《电子与信息学报》发表综述，系统梳理混合专家（MoE）大语言模型的算法、系统与架构优化技术。文章指出，MoE通过稀疏激活机制突破稠密模型的算力瓶颈，实现参数规模与计算开销的解耦，但面临跨设备通信拥塞、权重搬运延迟与负载不均等系统挑战。团队从激活通信优化、专家预取缓存、负载均衡调度及存算协同架构等维度，全面评述了当前主流解决方案，并结合EPLB、DeepSpeed、vLLM等开源项目分析工程实践，最后提出算法-系统-架构协同设计是未来突破方向，为MoE大模型高效部署提供系统性技术路线图。（149字）
+
+
+## [干货！如何训练一个开源推理模型Olmo-Thinking](https://mp.weixin.qq.com/s?__biz=MzI1MzEwMzIwOQ==&mid=2247505088&idx=1&sn=2707e294484fc6b0037bd612831f5d4c&chksm=e898819501fcc64e51813ba90bb0b889bab2bb626e84ec0d84ede0eed479469a167fa2d19070&mpshare=1&scene=1&srcid=1111smddl3uIywFxHuwvVI8t&sharer_shareinfo=880d67604ec882cb4d1abeb18e764350&sharer_shareinfo_first=880d67604ec882cb4d1abeb18e764350#rd)
+
+本文基于Nathan Lambert在PyTorchCon 2025的分享，系统梳理了开源推理模型Olmo-Thinking的全流程训练方法。作者指出，为突破现有模型“记忆而非推理”的局限，需构建完全透明的训练栈：首先通过GQA架构优化显著降低RL内存开销；其次采用RegMix数据配比策略，以量化权衡提升数学与代码能力；再通过推理蒸馏（如使用DeepSeek生成数据）进行SFT，并引入Thinking-DPO增强偏好对齐；最后设计异步RL训练系统，结合对数概率重算与重要性采样解决生成-训练不一致问题。全文强调：唯有开放架构、数据与训练流程，才能区分真实能力提升与数据偏差幻觉，推动推理模型的可复现与可进化。
+
+
+## [解锁任意模态模型训练，字节跳动Seed开源VeOmni框架](https://mp.weixin.qq.com/s?__biz=MzkzMDY5MzYxNg==&mid=2247492570&idx=1&sn=2c742663d81e4c65b06c87507243a2e3&chksm=c3370b739cdf006efc8d47f5aeac28aaa92bec4cd5f7fa96bde2078e92216adf47b441031508&mpshare=1&scene=1&srcid=11119rnN7JCjweM4Se2BrXKj&sharer_shareinfo=5133b8daa2dfe9d01663ed5c89b6f3e5&sharer_shareinfo_first=5133b8daa2dfe9d01663ed5c89b6f3e5#rd)
+
+字节跳动Seed团队开源VeOmni框架，首次实现PyTorch原生的任意模态（文本、图像、语音、视频）大模型高效训练。该框架创新采用“以模型为中心”的分布式设计，解耦模型架构与并行策略，支持FSDP、SP、EP等多维并行方式灵活组合，工程开发时间压缩90%以上。实测表明，其在128卡上训练300亿参数MoE模型吞吐超2800 tokens/sec/GPU，支持160K超长上下文，性能超越TorchTitan，并已成功应用于UI-TARS-1.5等工业项目。代码与论文已公开，GitHub星标超500，显著降低全模态AI研发门槛。
+
+
+## [从零构建能自我优化的AI Agent：Reflection和Reflexion机制对比详解与实现](https://mp.weixin.qq.com/s?__biz=MzI1MjQ2OTQ3Ng==&mid=2247660967&idx=1&sn=042135c355da6e4f075e72cebb25f543&chksm=e83bea30f67c10bb171586e3692bfc8f5a2b5cecad00fd23a579f93cf31c2be879129734e3c9&mpshare=1&scene=1&srcid=1111bZCVICuWICxxhtSNp1My&sharer_shareinfo=4366733fec791ec98bb2cc8dadc538f7&sharer_shareinfo_first=4366733fec791ec98bb2cc8dadc538f7#rd)
+
+本文系统对比了AI Agent中两种核心自我优化机制：Reflection与Reflexion。Reflection通过生成器与反思器的迭代循环，实现内容的内部优化，适用于创意类任务；Reflexion则进一步引入外部知识检索（如Tavily搜索）与结构化反思记忆，形成“生成-批评-搜索-修订”闭环，显著提升事实准确性与专业性，尤其在知识密集型任务中表现优异。文章基于LangChain与LangGraph完整实现两种架构，详述提示工程、结构化输出、工具集成与状态管理，并通过LinkedIn文案生成与神经网络原理解释等案例验证其有效性，为构建自适应AI系统提供可复用的技术范式。
+
+
+## [获NVIDIA致谢：悟空Agent的实践、复盘与迭代](https://mp.weixin.qq.com/s?__biz=MjM5ODYwMjI2MA==&mid=2649796466&idx=1&sn=bde4c05e0548ed972aaed26ca85a8b28&chksm=bf9116d44d081e305aa674a48f795a2bf51eff7ea067f100ffe270ac809ccd0ced938ffeaed8&mpshare=1&scene=1&srcid=1108pQijDSLILpDtwLdMhUUA&sharer_shareinfo=637244a1afc62ac40abc96df23679b81&sharer_shareinfo_first=637244a1afc62ac40abc96df23679b81#rd)
+
+悟空代码安全团队基于多智能体架构研发的AI审计系统“悟空Agent”，因成功发现NVIDIA Megatron-LM的CVE-2025-23348高危反序列化漏洞获官方致谢。该系统通过Client、Remote、Audit、Review、Fix五大智能体协同，实现漏洞发现、复核与修复闭环，扫描效率提升80%，误报率下降60%。团队攻克上下文断流与调度失衡两大瓶颈，引入上下文工程与RAG知识补全，并构建数据飞轮实现Bad Case闭环率超97%。文章强调AI并非替代人类，而是将安全专家从重复劳动中解放，推动安全深度融入AI基础设施与业务生产线，重塑人机协同的安全范式。
+
+
+## [DocReward：让智能体“写得更专业”的文档奖励模型](https://mp.weixin.qq.com/s?__biz=MzAwMTA3MzM4Nw==&mid=2649505908&idx=1&sn=ad6e5228bacc8f99b6ae5d67abd87b2d&chksm=83aad7a488a91d10e695d388a1de4eec62f84ea12eaabee008b44637b2f7906037fcee0ec0f4&mpshare=1&scene=1&srcid=1107MpZpLKe3kOllGRASt7FK&sharer_shareinfo=e46ad9296e83b0a9ad205e4f22713e87&sharer_shareinfo_first=e46ad9296e83b0a9ad205e4f22713e87#rd)
+
+微软亚洲研究院联合香港中文大学、中国科学院大学提出DocReward，首个专注于评估文档结构与样式专业性的奖励模型。该模型通过11.7万对多领域、多类型的文档偏好数据，结合视觉编码与Bradley-Terry损失函数训练，能精准判断排版、对齐、字体、层级等视觉要素的质量。实验表明，DocReward-7B在人工偏好评估中准确率达89.22%，显著超越GPT-5等基线；集成至智能体生成流程后，文档专业性提升显著，胜率高达60.8%。该成果填补了AI文档生成中“形式专业性”评估的空白，为办公智能体实现内容与呈现双优提供了核心支撑。
+
+
+## [当谈论 FP8 训练的时候，我们到底在聊什么?](https://mp.weixin.qq.com/s?__biz=MzI1MzEwMzIwOQ==&mid=2247504771&idx=1&sn=87aacc4e1ca70de884113f2cd9026d53&chksm=e8e269321b41b3182eb3fb6aa0528907de10d2ba5061c62beb1fc5d78dc5b7c26d452e543abd&mpshare=1&scene=1&srcid=1107Lg5V8tZgc4PEGiguoJnX&sharer_shareinfo=85a9dcfd079905c53b250287aa93bac9&sharer_shareinfo_first=85a9dcfd079905c53b250287aa93bac9#rd)
+
+本文系统解析了FP8混合精度训练的技术原理与实践方案，聚焦NVIDIA Ada/Hopper/Blackwell架构下E4M3与E5M2两种FP8格式的量化策略。文章详述了per-tensor、blockwise与MXFP8三大主流recipe在计算、存储与通信中的实现细节，指出FP8虽可提升算力（BF16两倍）并降低显存，但需精细处理scale计算、权重冗余存储及分布式通信一致性问题。DeepSeek-V3等大模型已验证其有效性，尤其1D token量化+2D权重量化成为性能关键。文章还揭示了FP8 primary weights与FP8通信的实现难点，为工业级大模型训练提供高密度技术参考。
+
+
 ## [扩散不死，BERT永生！Karpathy凌晨反思：自回归时代该终结了?](https://mp.weixin.qq.com/s?__biz=MzI3MTA0MTk1MA==&mid=2652641887&idx=2&sn=769d7defb141fe41e107c308ce78c04e&chksm=f07aa7013741dda9171808a9e2f099e60a4fdb2ac90ca0a390b4a302104996dd1bda6d21dc58&mpshare=1&scene=1&srcid=1106CLICaAGPWTAt0rVxNktU&sharer_shareinfo=71795ae1cf3c0777c1b4e53f1d3c1ad0&sharer_shareinfo_first=71795ae1cf3c0777c1b4e53f1d3c1ad0#rd)
 
 本文揭示了BERT类掩码语言模型与文本扩散模型的本质关联：Nathan Barry通过动态掩码策略，将RoBERTa从判别式模型改造为生成式扩散模型，仅需微调训练目标即可生成连贯文本，验证了BERT本质上是固定掩码率的离散扩散过程。该发现得到Karpathy高度认可，指出扩散生成无需复杂架构，仅靠双向注意力迭代去噪即可实现，为大语言模型的生成范式提供了新路径。结合国内提出的DiffusionBERT与谷歌Gemini Diffusion，预示自回归架构或面临挑战，文本扩散或成LLM下一代关键方向。
